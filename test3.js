@@ -1,21 +1,37 @@
 function test1() {
-  const smallGear = 3000;
-  const bigGear = 7000;
-  const possibleGears = [];
+  let smallGear = 300;
+  let bigGear = 700;
+
+  let allSmall = [];
+  let allBig = [];
+  let possibleGears = [];
   const impossibleGears = [];
 
-  async function getGears() {
-    for (i = 1; i <= smallGear; i++) {
-      for (j = 1; j <= bigGear; j++) {
-        possibleGears.push(i * j);
-      }
+  async function small() {
+    for (let i = 1; i <= smallGear; i++) {
+      allSmall.push(i);
     }
   }
 
-  getGears();
+  async function big() {
+    for (let i = 1; i <= bigGear; i++) {
+      allBig.push(i);
+    }
+  }
+
+  async function calc() {
+    for (const element of allBig) {
+      for (const gear of allSmall) {
+        possibleGears.push(element * gear);
+      }
+    }
+  }
+  small();
+  big();
+  calc();
 
   const lastGear = possibleGears.slice(-1);
-  const gears = new Set(possibleGears); // Removemos valores duplicados transformando o array em um Set - .sort((a, b) => a - b)
+  const gears = new Set(possibleGears);
 
   async function checkImpossibleGears() {
     /* Percorremos todos os numeros até a marcha máxima e pushamos no array impossibleGears as marchas não encontradas */
@@ -35,20 +51,8 @@ function test1() {
   return impossibleGears.length;
 }
 
-// -----------------------------------
-
-const start = performance.now();
-test1();
-const end = performance.now();
-const elapsed = end - start;
-console.log("Tempo de execução: " + elapsed);
-
-/* 
-marcha máxima = 21000000
-possiveis = 6218446
-Impossiveis = 14781554
-somatoria = 21000000
-Tempo de execução: 13662.518999993801
-*/
-
-//--------------------------------------------
+// const start = performance.now();
+// test1();
+// const end = performance.now();
+// const elapsed = end - start;
+// console.log("Tempo de execução: " + elapsed);
