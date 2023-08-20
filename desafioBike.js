@@ -29,7 +29,7 @@ async function test1() {
   return impossibleGears.length;
 }
 
-// -----------------------------------
+// ------------------------------------
 
 const start = performance.now();
 test1().then((result) => {
@@ -47,4 +47,4 @@ somatoria = 21000000
 Tempo de execução: 13662.518999993801
 */
 
-// -----------------------------------
+// ------------------------------------
