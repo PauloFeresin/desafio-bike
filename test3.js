@@ -7,27 +7,13 @@ async function test1() {
 
   /* Achamos todas as marchas possivel e adicionamos no Set possibleGears, que já elimina valores duplicados*/
   for (let i = 1; i <= smallGear; i++) {
-    for (let j = 1; j <= bigGear; j++) {
+    for (let j = i; j <= bigGear; j++) {
       possibleGears.add(i * j);
     }
   }
 
   const impossibleGears = lastGear - possibleGears.size;
 
-  /* Percorremos todos os numeros até a marcha máxima e pushamos no array impossibleGears as marchas não encontradas */
-
-  // for (let i = 1; i <= lastGear; i++) {
-  //   if (!possibleGears.has(i)) {
-  //     impossibleGears.push(i);
-  //   }
-  // }
-
-  /*LOGS DE VERIFICAÇÃO*/
-
-  // console.log("marcha máxima = " + lastGear);
-  // console.log("possiveis = " + possibleGears.size);
-  // console.log("Impossiveis = " + impossibleGears.length);
-  // console.log("somatoria = " + (possibleGears.size + impossibleGears.length)); // É a soma das marchas possiveis e impossiveis, portanto precisa ser igual ao valor da ultima marcha
   return impossibleGears;
 }
 
